@@ -93,7 +93,3 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-
-      - name: Exécution API/Dashboard
-        run: |
-          python Veynachter_Quentin_1_API_112023.py &  #Le "&" lance le script en tâche de fond
