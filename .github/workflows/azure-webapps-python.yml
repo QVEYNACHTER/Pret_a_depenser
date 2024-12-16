@@ -17,10 +17,10 @@
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # For more samples to get started with GitHub Action workflows to deploy to Azure: https://github.com/Azure/actions-workflow-samples
 
-name: Build and deploy Python app to Azure Web App - ProbaRemboursement
+name: Build and deploy Python app to Azure Web App - probaremboursement
 
 env:
-  AZURE_WEBAPP_NAME: 'ProbaRemboursement'  # set this to the name of your Azure Web App
+  AZURE_WEBAPP_NAME: 'probaremboursement'  # set this to the name of your Azure Web App
   PYTHON_VERSION: '3.12'              # set this to the Python version to use
 
 on:
