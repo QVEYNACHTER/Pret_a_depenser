@@ -44,7 +44,7 @@ def predict():
     shap_values = explainer.shap_values(sample_scaled)
     
     #On retourne les valeurs SHAP ainsi que la probabilité, sous forme d'item ou liste car c'est nécessaire pour jsonify
-    return jsonify({'probability': proba.tolist(),
+    return jsonify({'probability': proba[0],
                     'shap_values': shap_values[0].tolist(),
                     'feature_names': sample.columns.tolist(),
                     'feature_values': sample.values[0].tolist()})
