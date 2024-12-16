@@ -38,6 +38,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Installation de Git LFS
+      - name: Install Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+          
       - name: Set up Python version
         uses: actions/setup-python@v3.0.0
         with:
