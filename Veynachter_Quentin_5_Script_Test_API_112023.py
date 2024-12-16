@@ -20,21 +20,21 @@ def client():
 
 #On teste le chargement du modèle
 def test_model_loading():
-    model_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'model.pkl')
+    model_path = os.path.join(dir, 'model.pkl')
     assert os.path.exists(model_path), f"Le modèle n'a pas été trouvé à {model_path}"
     model = joblib.load(model_path)
     assert model is not None, "Erreur dans le chargement du modèle"
 
 #On teste le chargement du fichier .parquet
 def test_parquet_loading():
-    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_final.parquet')
+    data_path = os.path.join(dir, 'data_final.parquet')
     assert os.path.exists(data_path), f"Le fichier .parquet n'a pas été trouvé à {data_path}"
     df = pd.read_parquet(data_path)
     assert not df.empty, "Erreur dans le chargement du fichier .parquet"
 
 #On teste la fonction de prédiction
 def test_predict(client):
-    data_path = os.path.join(dir, 'Veynachter_Quentin_3_Dossier_Code_112023', 'Artefacts', 'data_final.parquet')
+    data_path = os.path.join(dir, 'data_final.parquet')
     df = pd.read_parquet(data_path)
     sk_id_curr = df.iloc[0]['SK_ID_CURR'] #1er SK_ID_CURR du dataset
     
