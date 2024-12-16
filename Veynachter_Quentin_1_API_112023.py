@@ -8,5 +8,5 @@ dir = './Veynachter_Quentin_3_Dossier_Code_112023/Artefacts'
 env = os.environ.copy()
 
 #On exécute api.py et dashboard.py
-subprocess.Popen(['python', f'{dir}/api.py', '--port', '5000'], env=env)
-subprocess.Popen(['streamlit', 'run', f'{dir}/dashboard.py', '--server.port', '8000'], env=env)
+subprocess.Popen(['python', f'{dir}/api.py'], env=env)
+subprocess.Popen(['streamlit', 'run', f'{dir}/dashboard.py', '--server.headless=true'], env=env)
