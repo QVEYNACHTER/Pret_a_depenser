@@ -24,8 +24,6 @@ env:
   PYTHON_VERSION: '3.12'              # set this to the Python version to use
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
