@@ -5,9 +5,6 @@
 name: Build and deploy Python app to Azure Web App - probaremboursement
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -28,10 +25,13 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r Veynachter_Quentin_3_Dossier_Code_112023/requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
+      - name: Test unitaire
+        run: pytest Veynachter_Quentin_5_Script_Test_API_112023.py
+        
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -58,7 +58,6 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
       
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
