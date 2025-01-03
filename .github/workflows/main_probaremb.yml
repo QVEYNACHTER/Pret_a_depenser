@@ -17,6 +17,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Installation de Git LFS
+      - name: Install Git LFS
+        run: |
+          git lfs install
+          git lfs pull
+          
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
@@ -32,15 +38,15 @@ jobs:
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+      - name: Test unitaire
+        run: pytest Veynachter_Quentin_5_Script_Test_API_112023.py
 
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v4
         with:
           name: python-app
           path: |
-            release.zip
+            .
             !venv/
 
   deploy:
@@ -55,10 +61,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: python-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
-
+          path: .
       
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
