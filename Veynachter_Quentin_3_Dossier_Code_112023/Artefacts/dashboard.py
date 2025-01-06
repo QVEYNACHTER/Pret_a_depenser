@@ -28,22 +28,22 @@ def get_state():
 
     return st.session_state['state']
 
-#Fonction pour formater les valeurs en fonction de leur type
+#Fonction pour formater les valeurs numériques
 def format_value(val):
     if pd.isna(val):
         return val
     if isinstance(val, (float, int)):
         if val == int(val):
-            return int(val) #Exemple : Remplace 5.0 par 5
-        return round(val, 2) #Arrondit les floats à 2 décimales
+            return f"{val:.0f}" #return int(val) ne fonctionnait pas comme espéré
+        return round(val, 2)
     return val
 
 #Fonction pour retourner une couleur (vert ou rouge) en fonction du threshold
 def compute_color(value):
     if 0 <= value < threshold:
-        return "green"
+        return 'green'
     elif threshold <= value <= 100:
-        return "red"
+        return 'red'
 
 state = get_state()
 
