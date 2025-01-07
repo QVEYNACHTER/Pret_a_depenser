@@ -6,12 +6,7 @@ from matplotlib.ticker import MaxNLocator
 import requests
 import streamlit as st
 
-#Chemin pour accéder à dashboard.py
-dir = os.path.dirname(os.path.abspath(__file__))
-
-#On récupère data_final
-data_path = os.path.join(dir, '.', 'data_final.parquet')
-df = pd.read_parquet(data_path)
+#Le threshold
 threshold = 44.5262
 
 #Pour étendre la largeur de la page
