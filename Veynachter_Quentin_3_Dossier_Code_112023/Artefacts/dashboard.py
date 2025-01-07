@@ -63,15 +63,7 @@ if st.button('Run') or state['data_received']:
 
     #Si les données n'ont pas été reçues pour ce client
     if not state['data_received']:
-        #On détecte si l'appli tourne en local ou sur Heroku
-        if os.environ.get('HEROKU') == 'true':
-            #Sur Heroku, utiliser l'URL de production
-            api_url = 'https://proba-remb-859731147ee5.herokuapp.com/predict'
-        else:
-            #En local, utiliser localhost
-            api_url = 'http://localhost:5000/predict'
-
-        response = requests.post(api_url, json={'SK_ID_CURR': int(sk_id_curr)})
+        response = requests.post('http://127.0.0.1:5000/predict', json={'SK_ID_CURR': int(sk_id_curr)})
         if response.status_code != 200: #Erreur 200 indique que la requête a été traitée avec succès
             st.error(f"Erreur lors de l'appel à l'API : {response.status_code} - {response.text}")
             st.stop()
