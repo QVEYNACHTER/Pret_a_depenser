@@ -25,8 +25,8 @@ def predict():
     data = request.json
     id = data['SK_ID_CURR']
 
-    #On récupère data_final
-    data_path = os.path.join(dir, ".", "data_final.parquet")
+    #On récupère data_sample
+    data_path = os.path.join(dir, ".", "data_sample.parquet")
     df = pd.read_parquet(data_path)
     sample = df[df['SK_ID_CURR'] == id]
 
