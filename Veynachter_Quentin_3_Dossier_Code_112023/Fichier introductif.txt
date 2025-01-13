@@ -8,15 +8,21 @@ Structure du repository :
 	- Meilleurs modèles et feature importance.ipynb : Notebook de modélisation des meilleurs modèles incluant une rapide analyse de feature importance
 	- Artefacts : Dossier comprenant :
 		- Les scripts api.py et dashboard.py
-		- Les données data_final.parquet et data_test.parquet
+		- Les données data_final.parquet, data_test.parquet (absents du repo distant à cause de leur grosse taille)
+		- Le fichier data_sample.parquet qui a servi pour le déploiement
 		- Les pickles model.pkl et scaler.pkl
-	- Data drift : Inclue le notebook data_drift.ipynb qui a permis de générer un tableau html
-	- mlruns : Tout les enregistrements relatifs à MLFlow
+		- Le fichier setup.sh qui est un script d'installation automatisée configurant l'environnement avant exécution de l'appli
+	- Data drift : Inclue le notebook data_drift.ipynb qui a permis de générer un tableau .html
+	- mlruns : Tous les enregistrements relatifs à MLFlow
 	- Fichier introductif.txt : Ce fichier décrivant la structure du repository
-	- requirements.txt : Fichier de dépendances listant les librairies Python nécessaires au déploiement
 
 - Veynachter_Quentin_4_Tableau_HTML_Data_Drift_Evidently_112023.html : Tableau d'analyse de data drift
 
 - Veynachter_Quentin_5_Script_Test_API_112023.py : Script de tests unitaires
 
 - Veynachter_Quentin_6_Presentation_112023.pptx : Support de présentation
+
+- Les autres fichiers à la racine du dossier :
+	- requirements.txt : Fichier de dépendances listant les librairies Python nécessaires au déploiement
+	- runtime.txt : Fichier définissant la version de Python à utiliser
+	- Procfile : Fichier de configuration définissant les processus à exécuter lors du déploiement de l'appli sur Heroku
