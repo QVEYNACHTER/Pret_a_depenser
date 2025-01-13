@@ -130,7 +130,7 @@ if st.button('Run') or state['data_received']:
 
     #On ajoute les feature values en annotations
     for bar, feature_value in zip(bars_left, shap_df_decrease['Feature Value']):
-        axes[0].text(bar.get_width() - 0.005, #Hors de la barre
+        axes[0].text(bar.get_width() - 0.0005, #Hors de la barre
                      bar.get_y() + bar.get_height() / 2, #Centré dans la barre
                      f'{feature_value}',
                      va='center', ha='left', fontsize=10, fontweight='bold', color='black') #Aligné à gauche
@@ -150,7 +150,7 @@ if st.button('Run') or state['data_received']:
 
     #On ajoute les feature values en annotations
     for bar, feature_value in zip(bars_right, shap_df_increase['Feature Value']):
-        axes[1].text(bar.get_width() + 0.005, #Hors de la barre
+        axes[1].text(bar.get_width() + 0.0005, #Hors de la barre
                      bar.get_y() + bar.get_height() / 2, #Centré dans la barre
                      f'{feature_value}',
                      va='center', ha='right', fontsize=10, fontweight='bold', color='black') #Aligné à droite
