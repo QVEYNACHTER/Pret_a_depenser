@@ -68,7 +68,7 @@ def test_compute_color(mocked_st):
 @pytest.mark.parametrize('mocked_st', [mocked_session_state], indirect=True)
 def test_format_value(mocked_st):
     assert format_value(1.82) == 1.82, "Erreur dans la fonction format_value"
-    assert format_value(7.00) == 7, "Erreur dans la fonction format_value"
+    assert format_value(7.00) == '7', "Erreur dans la fonction format_value"
 
 #On teste la fonction get_state()
 def test_get_state(mocked_st):	
