@@ -27,14 +27,14 @@ def test_model_loading():
 
 #On teste le chargement du fichier .parquet
 def test_parquet_loading():
-    data_path = os.path.join(dir, 'data_final.parquet')
+    data_path = os.path.join(dir, 'data_sample.parquet')
     assert os.path.exists(data_path), f"Le fichier .parquet n'a pas été trouvé à {data_path}"
     df = pd.read_parquet(data_path)
     assert not df.empty, "Erreur dans le chargement du fichier .parquet"
 
 #On teste la fonction de prédiction
 def test_predict(client):
-    data_path = os.path.join(dir, 'data_final.parquet')
+    data_path = os.path.join(dir, 'data_sample.parquet')
     df = pd.read_parquet(data_path)
     sk_id_curr = df.iloc[0]['SK_ID_CURR'] #1er SK_ID_CURR du dataset
     
