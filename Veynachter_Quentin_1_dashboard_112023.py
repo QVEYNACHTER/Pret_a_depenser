@@ -121,8 +121,7 @@ def plot_distribution(select_feature, col):
             ax.yaxis.get_major_formatter().set_useOffset(False)
 
             #On évite également la notation scientifique sur l'axe des x
-            ax.xaxis.set_major_formatter(ticker.ScalarFormatter())
-            ax.xaxis.get_major_formatter().set_useOffset(False)
+            ax.ticklabel_format(axis='x', style='plain')
 
         #On retirer le cadre du graphique
         for spine in ax.spines.values():
