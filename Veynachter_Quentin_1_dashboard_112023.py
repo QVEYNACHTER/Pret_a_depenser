@@ -135,17 +135,11 @@ state = get_state()
 
 st.markdown("<h1 style='text-align: center; color: black;'>Probablité de remboursement</h1>", unsafe_allow_html=True)
 
-#On augmente la taile du texte des labels et du bouton
-st.markdown("""
-            <style>label, .stTextInput label, .stSelectbox label, .stButton > button, .stTextInput input, .stSelectbox select {font-size: 24px !important}</style>
-            """,
-            unsafe_allow_html=True)
-
-#Ainsi que la taille du texte dans les graphs
+#On augmente la taille du texte dans les graphs
 plt.rcParams.update({'font.size': 14})
 
 #Pour entrer l'identifiant
-sk_id_curr = st.text_input('Entrez le SK_ID_CURR :')
+sk_id_curr = st.text_input(r"$\textsf{\LARGE Entrez le SK_ID_CURR :")
 
 #Style pour le bouton
 st.markdown("""
@@ -154,7 +148,7 @@ st.markdown("""
             unsafe_allow_html=True)
 
 #Bouton pour exécuter l'appel API
-if st.button('Run'):
+if st.button(r"$\textsf{\LARGE Run"):
     #Vérifications avant l'exécution
     if not sk_id_curr: #Si aucun ID n'a été entré
         st.error('Aucun SK_ID_CURR saisi')
@@ -298,12 +292,12 @@ if state['data_received']:
 
     #Ajout des features qui réduisent le risque dans col1
     with col1:
-        select_decrease = st.selectbox('Sélectionnez une feature réduisant le risque :',
+        select_decrease = st.selectbox(r"$\textsf{\LARGE Sélectionnez une feature réduisant le risque :",
                                        [''] + shap_df_decrease['Feature'].tolist())
     
     #Ajout des features qui augmentent le risque dans col2
     with col2:
-        select_increase = st.selectbox('Sélectionnez une feature augmentant le risque :',
+        select_increase = st.selectbox(r"$\textsf{\LARGE Sélectionnez une feature augmentant le risque :",
                                        [''] + shap_df_increase['Feature'].tolist())
     
     #On plot
