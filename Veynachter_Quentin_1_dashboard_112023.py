@@ -107,7 +107,7 @@ def plot_distribution(select_feature, col):
                     ax.bar(bins[-1] + bin_width / 2, n_nan, width=bin_width, color='orangered', label='NaN', edgecolor='black')
 
                 #On étiquète la barre pour la distinguer des autres catégories
-                ax.text(bins[-1] + bin_width / 2, n_nan, 'NaN', ha='center', va='bottom', fontsize=10)
+                ax.text(bins[-1] + bin_width / 2, n_nan, 'NaN', ha='center', va='bottom')
 
             #On applique une échelle logarythmique si nécessaire
             total_values = np.append(hist_data, n_nan) #On inclue les NaNs
@@ -120,12 +120,15 @@ def plot_distribution(select_feature, col):
             ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
             ax.yaxis.get_major_formatter().set_useOffset(False)
 
+            #On évite également la notation scientifique sur l'axe des x
+            ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+
         #On retirer le cadre du graphique
         for spine in ax.spines.values():
             spine.set_visible(False)
 
         #On ajoute les titres et labels
-        ax.set_title(f'Distribution pour {select_feature}', fontsize=20, weight='bold')
+        ax.set_title(f'Distribution pour {select_feature}', weight='bold')
         ax.set_xlabel(select_feature)
         ax.set_ylabel('Nombre de clients')
 
@@ -138,7 +141,13 @@ st.markdown("<h1 style='text-align: center; color: black;'>Probablité de rembou
 #On augmente la taille du texte dans les graphs
 plt.rcParams.update({'font.size': 14})
 
-#Pour entrer l'identifiant
+#Ainsi que l'input
+st.markdown("""
+            <style>.stTextInput input {font-size: 24px !important; height: 40px !important}</style>
+            """,
+            unsafe_allow_html=True)
+
+#One entre l'identifiant
 sk_id_curr = st.text_input(r"$\textsf{\LARGE Entrez le SK\_ID\_CURR :}$")
 
 #Style pour le bouton
@@ -246,7 +255,7 @@ if state['data_received']:
     #Graphique pour les features qui réduisent le risque
     bars_left = axes[0].barh(shap_df_decrease['Feature'], shap_df_decrease['SHAP Value'], color='lightgreen', edgecolor='black')
     axes[0].set_xlabel('Feature importance')
-    axes[0].set_title('Top 10 features qui réduisent le risque', fontsize=20, weight='bold')
+    axes[0].set_title('Top 10 features qui réduisent le risque', weight='bold')
     axes[0].invert_yaxis() #Inverse l'axe pour que la feature la plus importante soit en haut
     axes[0].invert_xaxis() #Inverse l'axe pour les barres pointent vers la droite
     axes[0].xaxis.set_major_locator(MaxNLocator(nbins=3)) #Limite à 3 xticks
@@ -265,7 +274,7 @@ if state['data_received']:
     #Graphique pour les features qui augmentent le risque
     bars_right = axes[1].barh(shap_df_increase['Feature'], shap_df_increase['SHAP Value'], color='lightcoral', edgecolor='black')
     axes[1].set_xlabel('Feature importance')
-    axes[1].set_title('Top 10 features qui augmentent le risque', fontsize=20, weight='bold')
+    axes[1].set_title('Top 10 features qui augmentent le risque', weight='bold')
     axes[1].invert_xaxis() #Inverse l'axe pour les barres pointent vers la gauche
     axes[1].yaxis.tick_right() #Déplace les yticks à droite
     axes[1].yaxis.set_tick_params(left=False) #Désactive les yticks à gauche
