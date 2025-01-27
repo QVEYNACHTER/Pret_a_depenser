@@ -137,7 +137,7 @@ st.markdown("<h1 style='text-align: center; color: black;'>Probablité de rembou
 
 #On augmente la taile du texte des labels et du bouton
 st.markdown("""
-            <style>label, .stButton > button {font-size: 20px !important}</style>
+            <style>label, .stTextInput label, .stSelectbox label, .stButton > button, .stTextInput input, .stSelectbox select {font-size: 24px !important}</style>
             """,
             unsafe_allow_html=True)
 
@@ -149,7 +149,7 @@ sk_id_curr = st.text_input('Entrez le SK_ID_CURR :')
 
 #Style pour le bouton
 st.markdown("""
-            <style>button {width: 80px !important; height: 40px !important; white-space: nowrap !important}</style>
+            <style>button {width: 60px !important; height: 40px !important; white-space: nowrap !important}</style>
             """,
             unsafe_allow_html=True)
 
