@@ -67,7 +67,7 @@ def plot_distribution(select_feature, col):
             #Sauf celle du client concerné
             if client_feature_value in unique_values:
                 client_value_index = unique_values.index(client_feature_value)
-                colors[client_value_index] = 'orangered'
+                colors[client_value_index] = 'darkorange'
 
             #On trace le barplot
             ax.bar(unique_values, counts.values, color=colors, edgecolor='black')
@@ -93,7 +93,7 @@ def plot_distribution(select_feature, col):
 
             #Et on change la couleur en orange
             if 0 <= client_bin_index < len(patches): #On vérifie que l'index est valide
-                patches[client_bin_index].set_facecolor('orangered')
+                patches[client_bin_index].set_facecolor('darkorange')
 
             #On ajoute les NaNs comme une barre séparée (en calculant dynamiquement sa position)
             n_nan = data.isna().sum()
@@ -104,7 +104,7 @@ def plot_distribution(select_feature, col):
 
                 #Si la valeur du client pour cette feature est NaN, on la colorie en orange
                 if pd.isna(client_feature_value):
-                    ax.bar(bins[-1] + bin_width / 2, n_nan, width=bin_width, color='orangered', label='NaN', edgecolor='black')
+                    ax.bar(bins[-1] + bin_width / 2, n_nan, width=bin_width, color='darkorange', label='NaN', edgecolor='black')
 
                 #On étiquète la barre pour la distinguer des autres catégories
                 ax.text(bins[-1] + bin_width / 2, n_nan, 'NaN', ha='center', va='bottom')
@@ -120,7 +120,8 @@ def plot_distribution(select_feature, col):
             ax.yaxis.set_major_formatter(ticker.ScalarFormatter())
             ax.yaxis.get_major_formatter().set_useOffset(False)
 
-            #On évite également la notation scientifique sur l'axe des x
+            #On limite à 5 ticks, et on évite également la notation scientifique sur l'axe des x
+            ax.xaxis.set_major_locator(MaxNLocator(nbins=5))
             ax.ticklabel_format(axis='x', style='plain')
 
         #On retirer le cadre du graphique
