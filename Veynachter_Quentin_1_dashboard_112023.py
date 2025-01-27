@@ -125,7 +125,7 @@ def plot_distribution(select_feature, col):
             spine.set_visible(False)
 
         #On ajoute les titres et labels
-        ax.set_title(f'Distribution pour {select_feature}', weight='bold')
+        ax.set_title(f'Distribution pour {select_feature}', fontsize=20, weight='bold')
         ax.set_xlabel(select_feature)
         ax.set_ylabel('Nombre de clients')
 
@@ -134,11 +134,22 @@ def plot_distribution(select_feature, col):
 state = get_state()
 
 st.markdown("<h1 style='text-align: center; color: black;'>Probablité de remboursement</h1>", unsafe_allow_html=True)
+
+#On augmente la taile du texte des labels et du bouton
+st.markdown("""
+            <style>label, .stButton > button {font-size: 20px !important}</style>
+            """,
+            unsafe_allow_html=True)
+
+#Ainsi que la taille du texte dans les graphs
+plt.rcParams.update({'font.size': 14})
+
+#Pour entrer l'identifiant
 sk_id_curr = st.text_input('Entrez le SK_ID_CURR :')
 
 #Style pour le bouton
 st.markdown("""
-            <style>button {width: 60px !important; white-space: nowrap !important}</style>
+            <style>button {width: 80px !important; height: 40px !important; white-space: nowrap !important}</style>
             """,
             unsafe_allow_html=True)
 
@@ -241,7 +252,7 @@ if state['data_received']:
     #Graphique pour les features qui réduisent le risque
     bars_left = axes[0].barh(shap_df_decrease['Feature'], shap_df_decrease['SHAP Value'], color='lightgreen', edgecolor='black')
     axes[0].set_xlabel('Feature importance')
-    axes[0].set_title('Top 10 features qui réduisent le risque', weight='bold')
+    axes[0].set_title('Top 10 features qui réduisent le risque', fontsize=20, weight='bold')
     axes[0].invert_yaxis() #Inverse l'axe pour que la feature la plus importante soit en haut
     axes[0].invert_xaxis() #Inverse l'axe pour les barres pointent vers la droite
     axes[0].xaxis.set_major_locator(MaxNLocator(nbins=3)) #Limite à 3 xticks
@@ -255,12 +266,12 @@ if state['data_received']:
         axes[0].text(bar.get_width() - 0.0005, #Hors de la barre
                      bar.get_y() + bar.get_height() / 2, #Centré dans la barre
                      f'{feature_value}',
-                     va='center', ha='left', fontsize=10, fontweight='bold', color='black') #Aligné à gauche
+                     va='center', ha='left', fontweight='bold', color='black') #Aligné à gauche
 
     #Graphique pour les features qui augmentent le risque
     bars_right = axes[1].barh(shap_df_increase['Feature'], shap_df_increase['SHAP Value'], color='lightcoral', edgecolor='black')
     axes[1].set_xlabel('Feature importance')
-    axes[1].set_title('Top 10 features qui augmentent le risque', weight='bold')
+    axes[1].set_title('Top 10 features qui augmentent le risque', fontsize=20, weight='bold')
     axes[1].invert_xaxis() #Inverse l'axe pour les barres pointent vers la gauche
     axes[1].yaxis.tick_right() #Déplace les yticks à droite
     axes[1].yaxis.set_tick_params(left=False) #Désactive les yticks à gauche
@@ -275,7 +286,7 @@ if state['data_received']:
         axes[1].text(bar.get_width() + 0.0005, #Hors de la barre
                      bar.get_y() + bar.get_height() / 2, #Centré dans la barre
                      f'{feature_value}',
-                     va='center', ha='right', fontsize=10, fontweight='bold', color='black') #Aligné à droite
+                     va='center', ha='right', fontweight='bold', color='black') #Aligné à droite
 
     st.pyplot(fig)
 
