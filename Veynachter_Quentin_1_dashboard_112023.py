@@ -139,7 +139,7 @@ st.markdown("<h1 style='text-align: center; color: black;'>Probablité de rembou
 plt.rcParams.update({'font.size': 14})
 
 #Pour entrer l'identifiant
-sk_id_curr = st.text_input(r"$\textsf{\LARGE Entrez le SK_ID_CURR :}$")
+sk_id_curr = st.text_input(r"$\textsf{\LARGE Entrez le SK\_ID\_CURR :}$")
 
 #Style pour le bouton
 st.markdown("""
