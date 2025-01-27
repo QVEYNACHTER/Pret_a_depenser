@@ -143,7 +143,7 @@ sk_id_curr = st.text_input(r"$\textsf{\LARGE Entrez le SK\_ID\_CURR :}$")
 
 #Style pour le bouton
 st.markdown("""
-            <style>button {width: 60px !important; height: 40px !important; white-space: nowrap !important}</style>
+            <style>button {width: 80px !important; height: 50px !important; white-space: nowrap !important}</style>
             """,
             unsafe_allow_html=True)
 
