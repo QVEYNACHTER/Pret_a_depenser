@@ -240,7 +240,7 @@ if state['data_received']:
     st.markdown("<br>", unsafe_allow_html=True)
 
     #Message en fonction de la décision
-    message_decision = ('Risque faible' if proba < threshold else 'Risque potentiel')
+    message_decision = (f'Risque faible ({proba:.2f}%)' if proba < threshold else f'Risque potentiel ({proba:.2f}%)')
     st.markdown(f"<div style='text-align: center; color:{color}; font-size:30px; border:2px solid {color}; padding:10px;'>{message_decision}</div>", unsafe_allow_html=True)
 
     #Encore un espace
